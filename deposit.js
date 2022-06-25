@@ -49,7 +49,7 @@ function Deposit(){
             ):(
               <>
               <h5>Success</h5>
-              <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+              <button type="submit" className="btn btn-light" onClick={clearForm}>Make another deposit</button>
               </>
             )}
     />
