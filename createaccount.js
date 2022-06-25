@@ -4,7 +4,7 @@ function CreateAccount(){
   const [name, setName]         = React.useState('');
   const [email, setEmail]       = React.useState('');
   const [password, setPassword] = React.useState('');
-  const ctx = React.useContext(UserContext);  
+  const ctx = React.useContext(UserContext);
 
   function validate(field, label){
       if (!field) {
@@ -22,7 +22,7 @@ function CreateAccount(){
     if (!validate(password, 'password')) return;
     ctx.users.push({name,email,password,balance:100});
     setShow(false);
-  }    
+  }
 
   function clearForm(){
     setName('');
@@ -36,7 +36,7 @@ function CreateAccount(){
       bgcolor="primary"
       header="Create Account"
       status={status}
-      body={show ? (  
+      body={show ? (
               <>
               Name<br/>
               <input type="input" className="form-control" id="name" placeholder="Enter name" value={name} onChange={e => setName(e.currentTarget.value)} /><br/>
