@@ -1,9 +1,7 @@
 function Withdraw(){
   const [show, setShow]         = React.useState(true);
   const [status, setStatus]     = React.useState('');
-  const [name, setName]         = React.useState('');
-  const [email, setEmail]       = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [withdraw, setWithdraw] = React.useState(0);
   const ctx = React.useContext(UserContext);
 
   function validate(field, label){
@@ -15,19 +13,15 @@ function Withdraw(){
       return true;
   }
 
-  function handleCreate(){
-    console.log(name,email,password);
-    if (!validate(name,     'name'))     return;
-    if (!validate(email,    'email'))    return;
-    if (!validate(password, 'password')) return;
-    ctx.users.push({name,email,password,balance:100});
+  function handleWithdraw(){
+    console.log(withdraw);
+    if (!validate(withdraw, 'withdraw')) return;
+    ctx.activeUser.balance -= withdraw;
     setShow(false);
   }
 
   function clearForm(){
-    setName('');
-    setEmail('');
-    setPassword('');
+    setWithdraw(0);
     setShow(true);
   }
 
@@ -38,13 +32,10 @@ function Withdraw(){
       status={status}
       body={show ? (
               <>
-              Name<br/>
-              <input type="input" className="form-control" id="name" placeholder="Enter name" value={name} onChange={e => setName(e.currentTarget.value)} /><br/>
-              Email address<br/>
-              <input type="input" className="form-control" id="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>
-              Password<br/>
-              <input type="password" className="form-control" id="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.currentTarget.value)}/><br/>
-              <button type="submit" className="btn btn-light" onClick={handleCreate}>Make Withdrawal</button>
+              Withdrawal<br/>
+              <input type="number" className="form-control" id="withdraw" placeholder="0.00" step="0.01" min= "0.01" value={withdraw} onChange={e => setWithdraw(e.currentTarget.valueAsNumber)} /><br/>
+              <div>Current Balance:{ctx.activeUser.balance}</div>
+              <button type="submit" className="btn btn-light" onClick={handleWithdraw}>Make Withdrawal</button>
               </>
             ):(
               <>

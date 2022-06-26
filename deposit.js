@@ -1,9 +1,7 @@
 function Deposit(){
   const [show, setShow]         = React.useState(true);
   const [status, setStatus]     = React.useState('');
-  const [name, setName]         = React.useState('');
-  const [email, setEmail]       = React.useState('');
-  const [password, setPassword] = React.useState('');
+  const [deposit, setDeposit]   = React.useState(0);
   const ctx = React.useContext(UserContext);
 
   function validate(field, label){
@@ -12,22 +10,19 @@ function Deposit(){
         setTimeout(() => setStatus(''),3000);
         return false;
       }
+      // if (deposit != )
       return true;
   }
 
-  function handleCreate(){
-    console.log(name,email,password);
-    if (!validate(name,     'name'))     return;
-    if (!validate(email,    'email'))    return;
-    if (!validate(password, 'password')) return;
-    ctx.users.push({name,email,password,balance:100});
+  function handleDeposit(){
+    console.log(deposit);
+    if (!validate(deposit, 'deposit')) return;
+    ctx.activeUser.balance += deposit;
     setShow(false);
   }
 
   function clearForm(){
-    setName('');
-    setEmail('');
-    setPassword('');
+    setDeposit(0);
     setShow(true);
   }
 
@@ -38,13 +33,10 @@ function Deposit(){
       status={status}
       body={show ? (
               <>
-              Name<br/>
-              <input type="input" className="form-control" id="name" placeholder="Enter name" value={name} onChange={e => setName(e.currentTarget.value)} /><br/>
-              Email address<br/>
-              <input type="input" className="form-control" id="email" placeholder="Enter email" value={email} onChange={e => setEmail(e.currentTarget.value)}/><br/>
-              Password<br/>
-              <input type="password" className="form-control" id="password" placeholder="Enter password" value={password} onChange={e => setPassword(e.currentTarget.value)}/><br/>
-              <button type="submit" className="btn btn-light" onClick={handleCreate}>Make Deposit</button>
+              Deposit Amount<br/>
+              <input type="number" className="form-control" id="deposit" placeholder="0.00" step="0.01" min="0.01" value={deposit} onChange={e => setDeposit(e.currentTarget.valueAsNumber)} /><br/>
+              <div>Current Balance:{ctx.activeUser.balance}</div>
+              <button type="submit" className="btn btn-light" onClick={handleDeposit}>Make Deposit</button>
               </>
             ):(
               <>
