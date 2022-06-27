@@ -14,7 +14,7 @@ function NavBar(){
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-          <li className="nav-item">
+          <li className="nav-item" title="On this page you can sign up for a new account!">
             <a className="nav-link" href="#/CreateAccount/">Create Account</a>
           </li>
           <li className="nav-item">
