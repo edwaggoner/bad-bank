@@ -4,6 +4,11 @@ function Withdraw(){
   const [withdraw, setWithdraw] = React.useState(0);
   const ctx = React.useContext(UserContext);
 
+  // Disable submit button until withdrawal amount is entered
+  // Make pesky 0 before deposit amount disappear
+  // Message to user for overdraft
+  // Message to user for NaN
+
   function validate(field, label){
       if (!field) {
         setStatus('Error: ' + label);
@@ -33,7 +38,7 @@ function Withdraw(){
       body={show ? (
               <>
               Withdrawal<br/>
-              <input type="number" className="form-control" id="withdraw" placeholder="0.00" step="0.01" min= "0.01" value={withdraw} onChange={e => setWithdraw(e.currentTarget.valueAsNumber)} /><br/>
+              <input className="form-control" id="withdraw" placeholder="0.00" value={withdraw} onChange={e => setWithdraw(e.currentTarget.valueAsNumber)} /><br/>
               <div>Current Balance:{ctx.activeUser.balance}</div>
               <button type="submit" className="btn btn-light" onClick={handleWithdraw}>Make Withdrawal</button>
               </>
