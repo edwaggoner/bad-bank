@@ -58,7 +58,7 @@ function Deposit(){
               Deposit Amount<br/>
               <input className="form-control" id="deposit" placeholder="0.00" onChange={handleErrors} /><br/>
               <div>Current Balance:{ctx.activeUser.balance}</div>
-              <button type="submit" className="btn btn-light" onClick={handleDeposit}>Make Deposit</button>
+              <button type="submit" className="btn btn-light" onClick={handleDeposit} disabled={deposit === 0}>Make Deposit</button>
               </>
             ):(
               <>
