@@ -18,9 +18,33 @@ function Withdraw(){
       return true;
   }
 
+  function handleErrors(e){
+    if ((e.currentTarget.value) === '') {
+      setStatus('');
+      setWithdraw(0);
+      return;
+    }
+    const number = Number(e.currentTarget.value);
+    if (isNaN(number)) {
+      setStatus('Your withdrawal amount must be a number');
+      setWithdraw(0);
+    } else if (number < 0) {
+      setStatus('Your withdrawal amount must be greater than zero');
+      setWithdraw(0);
+    } else if (number > ctx.activeUser.balance) {
+      setStatus('Your withdrawal amount must not be greater than your current balance');
+      setWithdraw(0);
+    }
+    else {
+      console.log('setting withdrawal to ' + number);
+      setWithdraw(number);
+      setStatus('');
+    }
+  }
+
   function handleWithdraw(){
     console.log(withdraw);
-    if (!validate(withdraw, 'withdraw')) return;
+    if (!validate(withdraw, 'No withdrawal amount has been entered')) return;
     ctx.activeUser.balance -= withdraw;
     setShow(false);
   }
@@ -38,9 +62,9 @@ function Withdraw(){
       body={show ? (
               <>
               Withdrawal<br/>
-              <input className="form-control" id="withdraw" placeholder="0.00" value={withdraw} onChange={e => setWithdraw(e.currentTarget.valueAsNumber)} /><br/>
+              <input className="form-control" id="withdraw" placeholder="0.00" onChange={handleErrors} /><br/>
               <div>Current Balance:{ctx.activeUser.balance}</div>
-              <button type="submit" className="btn btn-light" onClick={handleWithdraw}>Make Withdrawal</button>
+              <button type="submit" className="btn btn-light" onClick={handleWithdraw} disabled={withdraw === 0}>Make Withdrawal</button>
               </>
             ):(
               <>
