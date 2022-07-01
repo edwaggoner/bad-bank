@@ -9,7 +9,7 @@ function CreateAccount(){
   const [passready, setPassready]     = React.useState(false);
   const ctx = React.useContext(UserContext);
 
-  function validate(field, label){
+  function validate(field, label) {
       if (!field) {
         setStatus('Error: ' + label);
         setTimeout(() => setStatus(''),3000);
@@ -27,10 +27,12 @@ function CreateAccount(){
       return;
     }
     setNameready(true);
+    checkAllReadyAndSetStatus(true, passready, emailready);
   }
 
   function handleEmailChanged(e){
     const value = e.currentTarget.value;
+    // checkemailagain();
     setEmail(value);
     if (value === '') {
       setStatus('');
@@ -45,10 +47,12 @@ function CreateAccount(){
     // Set status to '' so that ...the error msg about including @ does not display
     setStatus('');
     setEmailready(true);
+    checkAllReadyAndSetStatus(nameready, passready, true);
   }
 
   function handlePasswordChanged(e){
     const value = e.currentTarget.value;
+    // checkemailagain();
     setPassword(value);
     if (value === '') {
       setStatus('');
@@ -63,11 +67,23 @@ function CreateAccount(){
     }
     setStatus('');
     setPassready(true);
-    if (nameready === true && passready === true && emailready === false) {
-      setStatus('Your email must include @');
+    checkAllReadyAndSetStatus(nameready, true, emailready);
     }
-  }
 
+  function checkAllReadyAndSetStatus(name, pass, email){
+    let newstatus = '';
+
+    if (!pass) {
+      newstatus = "Password must have at least 8 characters";
+    }
+    if (!email) {
+      newstatus = "Email must contain @";
+    }
+    if (!name) {
+      newstatus = "You must enter a name";
+    }
+    setStatus(newstatus);
+  }
 
 // if name is OK, email has something but does not include '@', and password is 8 or greater OK, the 'Your email must include @' msg should be displayed.
 
