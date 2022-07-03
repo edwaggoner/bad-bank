@@ -32,7 +32,7 @@ function CreateAccount(){
 
   function handleEmailChanged(e){
     const value = e.currentTarget.value;
-    // checkemailagain();
+
     setEmail(value);
     if (value === '') {
       setStatus('');
@@ -52,7 +52,7 @@ function CreateAccount(){
 
   function handlePasswordChanged(e){
     const value = e.currentTarget.value;
-    // checkemailagain();
+
     setPassword(value);
     if (value === '') {
       setStatus('');
@@ -84,8 +84,6 @@ function CreateAccount(){
     }
     setStatus(newstatus);
   }
-
-// if name is OK, email has something but does not include '@', and password is 8 or greater OK, the 'Your email must include @' msg should be displayed.
 
   function handleCreate(){
     console.log(name,email,password);

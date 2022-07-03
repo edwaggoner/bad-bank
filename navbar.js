@@ -1,10 +1,18 @@
 function NavBar(){
 
-  // const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]');
-  // const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl));
+  // 1. Identify where in my program the active page is changed (e.g., router in index.js?)
+  // 2. Add a console.log at {1.} that logs the old page and the new page. (e.g., 'Switching from page A to page B')
+  // 3. Drink more Ovaltine
+  // 4. Change the style of any specific tab in the Navbar to the selected style using JS
+  // 5. Play Stairway to Heaven
+  // 6. Identify the before and after tabs in the Navbar and change their styles when the switch happens.
 
-  // const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
-  // const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  let location = ReactRouterDOM.useLocation();
+  console.log(location);
+
+  function navA(pagePath, pageTitle) {
+    return <a className={'nav-link' + (location.pathname === `/{pagePath}/` ? ' active' : '')} href={`#/${pagePath}/`}>{`${pageTitle}`}</a>;
+  }
 
   return(
     <>
@@ -16,16 +24,16 @@ function NavBar(){
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
           <li className="nav-item" title="On this page you can sign up for a new account!">
-            <a className="nav-link" href="#/CreateAccount/">Create Account</a>
+            {navA('CreateAccount', 'Create Account')}
           </li>
           <li className="nav-item" title="Add money to your account here.">
-            <a className="nav-link" href="#/deposit/">Deposit</a>
+            {navA('deposit', 'Deposit')}
           </li>
           <li className="nav-item" title="Take money out of your account here.">
-            <a className="nav-link" href="#/withdraw/">Withdraw</a>
+            {navA('withdraw', 'Withdraw')}
           </li>
           <li className="nav-item" title="View account information for all users.">
-            <a className="nav-link" href="#/alldata/">AllData</a>
+            {navA('alldata', 'All Data')}
           </li>
         </ul>
       </div>

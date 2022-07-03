@@ -1,3 +1,15 @@
-.custom-tooltip {
-	--bs-tooltip-bg: var(--bs-primary);
-  }
+
+.navbar .navbar-brand {
+    color: black;
+    font-size: 24px;
+}
+
+.nav-link {
+	color: #94128A;
+    font-size: 24px;
+}
+
+.nav-link:hover {
+    color:blue;
+    font-size: 24px;
+}
