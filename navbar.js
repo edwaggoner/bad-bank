@@ -11,7 +11,7 @@ function NavBar(){
   console.log(location);
 
   function navA(pagePath, pageTitle) {
-    return <a className={'nav-link' + (location.pathname === `/{pagePath}/` ? ' active' : '')} href={`#/${pagePath}/`}>{`${pageTitle}`}</a>;
+    return <a className={'nav-link' + (location.pathname === `/`+pagePath+`/` ? ' active' : '')} href={`#`+pagePath+`/`}>{pageTitle}</a>;
   }
 
   return(
@@ -35,6 +35,7 @@ function NavBar(){
           <li className="nav-item" title="View account information for all users.">
             {navA('alldata', 'All Data')}
           </li>
+
         </ul>
       </div>
     </nav>

@@ -1,15 +1,23 @@
 
-.navbar .navbar-brand {
-    color: black;
+
+/* .navbar .navbar-brand {
+    color: green;
     font-size: 24px;
+    font-weight: 700;
 }
 
-.nav-link {
+.nav-tabs .nav-item .nav-link {
 	color: #94128A;
     font-size: 24px;
-}
+    font-weight: 700;
+} */
 
-.nav-link:hover {
-    color:blue;
-    font-size: 24px;
+
+.active {
+    color: blue !important;
+
 }
+/*
+.aria-current {
+    color: blue;
+} */
