@@ -2,7 +2,7 @@ function AllData(){
   const ctx = React.useContext(UserContext);
   return (
     <>
-    <h5>Bad Bank Active Users</h5>
+    <h5>BadBank Active Users</h5>
     <br/>
     <table className="table table-success table-hover">
       <thead>

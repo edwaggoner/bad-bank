@@ -107,26 +107,28 @@ function CreateAccount(){
   }
 
   return (
+    <body>
     <Card
       bgcolor="primary"
       header="Create Account"
       status={status}
       body={show ? (
               <>
-              Name<br/>
+              <p>Name</p>
               <input className="form-control" id="name" placeholder="Enter name" value={name} onChange={handleNameChanged} /><br/>
-              Email address<br/>
+              <p>Email Address</p>
               <input type="email" className="form-control" id="email" placeholder="Enter email" value={email} onChange={handleEmailChanged}/><br/>
-              Password<br/>
+              <p>Password</p>
               <input type="password" className="form-control" id="password" placeholder="Enter password" value={password} onChange={handlePasswordChanged}/><br/>
               <button type="submit" className="btn btn-light" onClick={handleCreate} disabled={!(nameready === true && emailready === true && passready === true)}>Create Account</button>
               </>
             ):(
               <>
               <h5>Success</h5>
-              <button type="submit" className="btn btn-light" onClick={clearForm}>Add another account</button>
+              <button type="submit" className="btn btn-light" onClick={clearForm}><p>Add another account</p></button>
               </>
             )}
     />
+    </body>
   )
 }

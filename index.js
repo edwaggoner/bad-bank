@@ -1,7 +1,7 @@
 function Spa() {
   const newUser = {
-    name: 'abel',
-    email: 'abel@mit.edu',
+    name: 'Peter Parker',
+    email: 'peter@mit.edu',
     password: 'secret',
     balance: 100
   };

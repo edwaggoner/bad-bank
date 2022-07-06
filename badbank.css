@@ -1,4 +1,6 @@
-
+body {
+    background-color: rgb(187, 185, 183);
+}
 
 .navbar-brand {
     color: black;
@@ -7,7 +9,8 @@
 }
 
 .active {
-    color: blue !important;
+    border-bottom: 2px rgb(139, 19, 19) solid;
+    color: rgb(139, 19, 19) !important;
 }
 
 .nav-link {
@@ -16,7 +19,29 @@
     font-weight: 700;
 }
 
-/* .container {
-    display: flex;
-    justify-content: space-around;
-} */
+.card-header {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.card-text {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.form-control {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+p {
+    font-size:24px;
+}
+#createStatus>p {
+    font-style: italic;
+    font-size: 18px;
+}
+
+.btn {
+    font-size: 24px;
+}

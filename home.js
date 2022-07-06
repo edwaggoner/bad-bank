@@ -1,11 +1,10 @@
 function Home(){
   return (
     <Card
-      txtcolor="black"
-      header="BadBank Landing Module"
-      title="Welcome to the bank"
-      text="You can move around using the navigation bar."
-      body={(<img src="bank.png" className="img-fluid" alt="Responsive image"/>)}
-    />    
-  );  
+      txtcolor="blue"
+      header="Where futures grow."
+      title="Welcome to your BadBank."
+      body={(<img src="wizardbank.jfif" className="img-fluid" alt="Responsive image"/>)}
+    />
+  );
 }

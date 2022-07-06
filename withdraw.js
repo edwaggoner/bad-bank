@@ -56,20 +56,20 @@ function Withdraw(){
 
   return (
     <Card
-      bgcolor="info"
+      bgcolor="warning"
       header="Withdraw"
       status={status}
       body={show ? (
               <>
-              Withdrawal<br/>
+              <p>Withdrawal</p><br/>
               <input className="form-control" id="withdraw" placeholder="0.00" onChange={handleErrors} /><br/>
-              <div>Current Balance:{ctx.activeUser.balance}</div>
-              <button type="submit" className="btn btn-light" onClick={handleWithdraw} disabled={withdraw === 0}>Make Withdrawal</button>
+              <div><p>Current Balance: ${ctx.activeUser.balance}</p></div>
+              <button type="submit" className="btn btn-light" onClick={handleWithdraw} disabled={withdraw === 0}><p>Make Withdrawal</p></button>
               </>
             ):(
               <>
               <h5>Success</h5>
-              <button type="submit" className="btn btn-light" onClick={clearForm}>Make another withdrawal</button>
+              <button type="submit" className="btn btn-light" onClick={clearForm}><p>Make another withdrawal</p></button>
               </>
             )}
     />
