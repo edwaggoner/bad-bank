@@ -24,7 +24,7 @@ function Withdraw(){
       setWithdraw(0);
       return;
     }
-    const number = Number(e.currentTarget.value);
+    const number = Number.parseFloat(e.currentTarget.value);
     if (isNaN(number)) {
       setStatus('Your withdrawal amount must be a number');
       setWithdraw(0);
@@ -61,7 +61,7 @@ function Withdraw(){
       status={status}
       body={show ? (
               <>
-              <p>Withdrawal</p><br/>
+              <p>Withdrawal Amount</p><br/>
               <input className="form-control" id="withdraw" placeholder="0.00" onChange={handleErrors} /><br/>
               <div><p>Current Balance: ${ctx.activeUser.balance}</p></div>
               <button type="submit" className="btn btn-light" onClick={handleWithdraw} disabled={withdraw === 0}><p>Make Withdrawal</p></button>
