@@ -21,7 +21,9 @@ function Deposit(){
       setStatus('');
       return;
     }
-    const number = Number.parseFloat(e.currentTarget.value);
+
+    const notrounded = Number.parseFloat(e.currentTarget.value);
+    const number = Math.round(notrounded * 100) / 100;
     if (isNaN(number)) {
       setStatus('Your deposit amount must be a number');
     } else if (number < 0) {

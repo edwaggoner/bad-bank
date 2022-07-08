@@ -21,7 +21,7 @@ function AllData(){
                 <td>{user.name}</td>
                 <td>{user.email}</td>
                 <td>{user.password}</td>
-                <td>{user.balance}</td>
+                <td>${user.balance}</td>
               </tr>
           )
         }
