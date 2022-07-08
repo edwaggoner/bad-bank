@@ -44,9 +44,11 @@ function Withdraw(){
   }
 
   function handleWithdraw(){
-    console.log(withdraw);
+    console.log('current balance is: ' + ctx.activeUser.balance);
+    console.log('withdrawal amount: ' + withdraw);
     if (!validate(withdraw, 'No withdrawal amount has been entered')) return;
-    ctx.activeUser.balance -= withdraw;
+    ctx.activeUser.balance = ctx.activeUser.balance - withdraw;
+    console.log('current balance is: ' + ctx.activeUser.balance);
     setShow(false);
   }
 
@@ -64,7 +66,7 @@ function Withdraw(){
               <>
               <p>Withdrawal Amount</p><br/>
               <input className="form-control" id="withdraw" placeholder="0.00" onChange={handleErrors} /><br/>
-              <div><p>Current Balance: ${ctx.activeUser.balance}</p></div>
+              <div><p>Current Balance: ${ctx.activeUser.balance.toFixed(2)}</p></div>
               <button type="submit" className="btn btn-light" onClick={handleWithdraw} disabled={withdraw === 0}><p>Make Withdrawal</p></button>
               </>
             ):(
